@@ -1,0 +1,25 @@
+name: Keep Supabase Website Alive
+
+on:
+  schedule:
+    - cron: '0 8 * * *'   # Everyday 08:00 UTC
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run keep-alive script
+        run: python keep_alive.py
