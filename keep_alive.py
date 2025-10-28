@@ -4,7 +4,7 @@ import datetime
 # List of URLs to ping (add as many as you want)
 URLS = [
     "https://manuj-ecommerce.vercel.app/",
-    "https://your-backend.vercel.app/api/health",
+    "https://nova-cart-olive.vercel.app/",
     "https://your-supabase-function-url.supabase.co/function/v1/keepalive"
 ]
 
