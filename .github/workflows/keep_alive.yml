@@ -2,7 +2,7 @@ name: Keep Supabase Website Alive
 
 on:
   schedule:
-    - cron: '0 8 * * *'   # Everyday 08:00 UTC
+    - cron: '0 * * * *'   # Everyday 08:00 UTC
   workflow_dispatch:
 
 jobs:
