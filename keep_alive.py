@@ -15,7 +15,7 @@ logging.basicConfig(
 URLS = [
     "https://manuj-ecommerce.vercel.app/",
     "https://nova-cart-olive.vercel.app/",
-    "https://your-supabase-function-url.supabase.co/function/v1/keepalive"
+    "https://gen-ai-qk66.onrender.com/health"
 ]
 
 def ping_site(url):
