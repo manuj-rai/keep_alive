@@ -15,7 +15,8 @@ logging.basicConfig(
 URLS = [
     "https://manuj-ecommerce.vercel.app/",
     "https://nova-cart-olive.vercel.app/",
-    "https://gen-ai-qk66.onrender.com/health"
+    "https://gen-ai-qk66.onrender.com/health",
+    "https://manuj-rai.vercel.app/"
 ]
 
 def ping_site(url):
