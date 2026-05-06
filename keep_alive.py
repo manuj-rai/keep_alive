@@ -1,7 +1,7 @@
 import requests
-import datetime
 import logging
 import sys
+import time
 
 # Configure logging
 logging.basicConfig(
@@ -19,25 +19,31 @@ URLS = [
     "https://manuj-rai.vercel.app/projects"
 ]
 
+HEADERS = {"User-Agent": "keep-alive-bot/1.0 (+github-actions)"}
+TIMEOUT = 15
+MAX_ATTEMPTS = 2
+RETRY_DELAY = 3
+
 def ping_site(url):
-    """Ping a single URL and log the result"""
-    try:
-        response = requests.get(url, timeout=10)
-        if response.status_code == 200:
-            logging.info(f"✅ {url} - Status: {response.status_code}")
+    """Ping a single URL, retrying once on transient network failure."""
+    for attempt in range(1, MAX_ATTEMPTS + 1):
+        try:
+            response = requests.get(url, headers=HEADERS, timeout=TIMEOUT)
+            if 200 <= response.status_code < 400:
+                logging.info(f"✅ {url} - Status: {response.status_code}")
+            else:
+                logging.warning(f"⚠️  {url} - Status: {response.status_code}")
             return True
-        else:
-            logging.warning(f"⚠️  {url} - Status: {response.status_code}")
-            return True  # Still counts as successful ping
-    except requests.exceptions.Timeout:
-        logging.error(f"❌ {url} - Error: Request timeout")
-        return False
-    except requests.exceptions.ConnectionError:
-        logging.error(f"❌ {url} - Error: Connection failed")
-        return False
-    except Exception as e:
-        logging.error(f"❌ {url} - Error: {e}")
-        return False
+        except (requests.exceptions.Timeout, requests.exceptions.ConnectionError) as e:
+            if attempt < MAX_ATTEMPTS:
+                logging.info(f"… {url} - {type(e).__name__}, retrying in {RETRY_DELAY}s")
+                time.sleep(RETRY_DELAY)
+                continue
+            logging.error(f"❌ {url} - Error: {type(e).__name__}")
+            return False
+        except Exception as e:
+            logging.error(f"❌ {url} - Error: {e}")
+            return False
 
 def main():
     """Ping all URLs once (for GitHub Actions)"""
@@ -66,9 +72,8 @@ def main():
         logging.info(f"✅ All sites are active!")
     
     logging.info(f"{'='*60}")
-    
-    # Exit with error code if any pings failed (optional)
-    # sys.exit(1 if failed_urls else 0)
+
+    sys.exit(1 if failed_urls else 0)
 
 if __name__ == "__main__":
     main()

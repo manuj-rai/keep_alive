@@ -2,7 +2,7 @@ name: Keep Supabase Website Alive
 
 on:
   schedule:
-    - cron: '0 * * * *'   # Everyday 08:00 UTC
+    - cron: '*/10 * * * *'   # Every 10 min — stays inside Render's 15-min sleep window; also pings Supabase via the frontends
   workflow_dispatch:
 
 jobs:
