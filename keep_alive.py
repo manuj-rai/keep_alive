@@ -16,7 +16,8 @@ URLS = [
     "https://trendverse.netlify.app/",
     "https://gen-ai-qk66.onrender.com/health",
     "https://manuj-rai.vercel.app/",
-    "https://manuj-rai.vercel.app/projects"
+    "https://manuj-rai.vercel.app/projects",
+    "https://www.manuj.online/"
 ]
 
 HEADERS = {"User-Agent": "keep-alive-bot/1.0 (+github-actions)"}
