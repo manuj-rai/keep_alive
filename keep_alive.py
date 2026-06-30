@@ -16,7 +16,9 @@ URLS = [
     "https://trendverse.netlify.app/",
     "https://gen-ai-qk66.onrender.com/health",
     "https://manuj-rai.vercel.app/",
+    "https://trendverse.netlify.app/",
     "https://manuj-rai.vercel.app/projects",
+    "https://kat-katha-web.vercel.app/",
     "https://www.manuj.online/"
 ]
 
