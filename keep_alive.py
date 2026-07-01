@@ -14,6 +14,7 @@ logging.basicConfig(
 # List of URLs to ping (add as many as you want)
 URLS = [
     "https://trendverse.netlify.app/",
+    "https://hair-crezz-salon.vercel.app/",
     "https://gen-ai-qk66.onrender.com/health",
     "https://manuj-rai.vercel.app/",
     "https://manuj-rai.vercel.app/projects",
