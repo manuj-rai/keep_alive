@@ -19,7 +19,8 @@ URLS = [
     "https://manuj-rai.vercel.app/",
     "https://manuj-rai.vercel.app/projects",
     "https://kat-katha-web.vercel.app/",
-    "https://www.manuj.online/"
+    "https://www.manuj.online/",
+    "https://karloo.vercel.app/login"
 ]
 
 HEADERS = {"User-Agent": "keep-alive-bot/1.0 (+github-actions)"}
